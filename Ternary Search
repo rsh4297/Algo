@@ -1,0 +1,17 @@
+
+while True:
+  if abs(e-s)<1e-9: return (s+e)//2       # 포물선의 형태로 양쪽(최소)에서 최대로 
+  mx = s+(e-s)//3
+  sx = e-(e-s)//3
+  if mx<sx:
+    s = mx
+  else:
+    e = sx 
+    
+    
+    
+Example) 
+  3차원 좌표평면 위 선분 하나와 점 하나
+    ans = 선분과 점 사이 거리의 최소값
+    
+    
