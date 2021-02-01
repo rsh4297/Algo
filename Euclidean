@@ -1,0 +1,16 @@
+# T/C  => O( (log a)^2 ) => 입력 시간(log a) * 계산 시간(log a)  *( 재귀 구현 시 (log n) )
+
+# a,b (a>b)   //  if  a = b*q + r (0<r<b)
+
+   gcd(a,b)  = gcd(b,r)  // if r==0:   gcd(a,b) => b
+  
+def gcd(a,b):                 gcd(a,b): return gcd(b,a%b) if b else a
+  r = a%b
+  if r==0:
+    return b
+  else:
+    return gcd(b,r)
+    
+def gcb(a,b):
+  m = gcd(a,b)
+  return m*(a//m)*(b//m)
