@@ -38,7 +38,7 @@ ex) (N-1 을 홀수가 될때까지 2로 나눔)
      ==>  a^d ≡ 1 (mod N)  /  a^(d*2^s) ≡ -1 (mod N)  [0<s<=r]
   
   
-  def miller_labin(n,a):  # n == prime / return true
+  def miller_labin(n,a):  # n == prime / return true 
     if not a%n: return False
     k = n-1
     while True:
@@ -46,7 +46,27 @@ ex) (N-1 을 홀수가 될때까지 2로 나눔)
         if tmp==n-1: return True # a^(n-1)= -1 (mod n)
         if k%2: return tmp==1
         k//=2
-
+ ################################################################ + 추가  (101 의 경우 반환에러)
+  def miller_labin(n,t=10):
+      if n<2:return False
+      elif n<=3: return True
+      else:
+          k = n-1
+          r = 0
+          while m%2==0:
+              r+=1 ; m//=2
+          for _ in range(t):
+              random = randint(2,n-2)  # 왜 random이 필요한지는 모르겠음
+              tmp = pow(random,k,n)
+              if tmp==1 or tmp==n-1: continue
+              try:
+                  for _ in range(t-1):
+                      tmp = pow(tmp,2,n)
+                      if tmp==n-1: 
+                          raise TypeError
+              except TypeError: continue
+              return False
+          return True
 ####################################### O (sqrt n) ###############################################  
 def Isprime(n):
     if n<=2 or n%2==0: return n==2
