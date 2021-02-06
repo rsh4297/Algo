@@ -14,3 +14,17 @@ def gcd(a,b):                 gcd(a,b): return gcd(b,a%b) if b else a
 def gcb(a,b):
   m = gcd(a,b)
   return m*(a//m)*(b//m)
+########################################### + Euler phi
+
+def gcd(a,b):                                   def phi(n):
+    while b:                                       c = int(n>1 and n)
+        a,b = b,a%b                                for p in range(2,int(n**.5)+1):
+    return a                                          if not n%p:
+def phi(a):                                              c -= c //p
+    b = a-1                                              while not n%p:
+    c=0                                                      n//=p
+    while b:                                       if n>1: c-=c//n
+        if not gcd(a,b)-1: # a,b 서로소            return c
+            c+=1
+        b-=1
+    return c
