@@ -11,8 +11,8 @@ def dfs(x):
         tmp = data[x][i]
         if visit[tmp]: continue  # 한번 점유했던것은 다시 점유 X (양보할때 해당 지점 무시하고 탐색)
         visit[tmp] = True
-        if oc[t]==0 or dfs(oc[t]):  # 점유가 가능하거나 점유하고 있는 노드에 양보가 가능할 경우
-           oc[t] = x
+        if oc[tmp]==0 or dfs(oc[tmp]):  # 점유가 가능하거나 점유하고 있는 노드에 양보가 가능할 경우
+           oc[tmp] = x
            return True
     return False
 
